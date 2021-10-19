@@ -1,0 +1,63 @@
+<div class="page-container">
+    <div class="cart_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                        <div class="cart_title">Products in cart<small></small></div>
+                        <div class="cart_items">
+                            <ul class="cart_list">
+                                <li class="cart_item clearfix" *ngFor = "let c of cartItems">
+                                    <div class="cart_item_image"><img [src]="c.product.image" alt=""></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Name</div>
+                                            <div class="cart_item_text">{{c.product.name}}</div>
+                                        </div>
+                                        <div class="cart_item_color cart_info_col">
+                                            <div class="cart_item_title">Description</div>
+                                            <div class="cart_item_text">{{c.product.description}}</div>
+                                        </div>
+                                        <div class="cart_item_quantity cart_info_col">
+                                            <div class="cart_item_title">Quantity</div>
+                                            <div class="cart_item_text">
+                                                <input class="col-md-3" type="number" name = "qty" min = 1
+                                                 (input) = "onQuantityChange()" [(ngModel)] = "c.quantity">
+                                            </div>
+                                        </div>
+                                        <div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Price</div>
+                                            <div class="cart_item_text">${{c.product.price}}</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title">Total price</div>
+                                            <div class="cart_item_text">{{c.totalPrice}}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="order_total">
+                            <div class="order_total_content text-md-right">
+                                <div class="order_total_title">Order Total:</div>
+                                <div class="order_total_amount">${{totalPrice}}</div>
+                            </div>
+                        </div>
+                        <div class="inputAddress">
+                            <input class="col-md-3" type="text" name = "address"
+                             placeholder="Type your shipping address here" [(ngModel)] = "deliveryAddress">
+                        </div>
+                        <div class="cart_buttons">
+                             <button type="button" 
+                             (click) = "clearCart()" class="button cart_button_clear">Clear cart</button>
+
+                            <button type="button" [disabled] = "cartItems.length == 0"
+                            (click) = "confirmCart()" class="button cart_button_checkout">Payment</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,21 @@
+<div class="sidenav">
+    <div class="logo">
+        <a href="/" class="simple-text logo-mini">
+            <div class="logo-img">
+                <img src="./assets/images/logo.png" />
+            </div>
+        </a>
+        <a href="/" class="simple-text logo-normal">
+            E-commerce
+        </a>
+    </div>
+    <ul class="nav">
+        <li *ngIf = "!isLoggedIn" class="active"><a routerLink="/"><i class="fab fa-creative-commons-by"></i>Login</a></li>
+        <li *ngIf = "!isLoggedIn"><a routerLink="registration"><i class="fas fa-registered"></i>Register</a></li>
+        <li *ngIf = "isLoggedIn"><a routerLink="cart"><i class="fas fa-cash-register"></i>Cart</a></li>
+        <!-- <li><a routerLink="orders"><i class="fas fa-list"></i>Orders</a></li> -->
+        <li *ngIf = "isLoggedIn"><a routerLink="products"><i class="fab fa-product-hunt"></i>Products</a></li>
+        <li *ngIf = "isAdmin"><a routerLink="admin-panel"><i class="fab fa-product-hunt"></i>Admin panel</a></li>
+    </ul>
+
+</div>

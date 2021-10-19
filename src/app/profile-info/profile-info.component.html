@@ -1,0 +1,30 @@
+<div class="page-container">
+    <div class="account-div" >
+        <mat-card class="account-card">
+        <mat-card-title style="text-align: center;">Account info</mat-card-title>
+        <mat-form-field class="account-form">
+            <input matInput type="text" name="email" placeholder="Email" formControlName="email">
+            <mat-error>Username</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="account-form">
+            <input matInput type="firstName" name="firstName" placeholder="Firstname" formControlName="firstName">
+            <mat-error>Firstname</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="account-form">
+            <input matInput type="lastName" name="lastName" placeholder="Lastname" formControlName="lastName">
+            <mat-error>Lastname</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="account-form">
+            <input matInput type="password" name="password" placeholder="Password" formControlName="password"
+            >
+            <mat-error>password</mat-error>
+        </mat-form-field><br>
+        <mat-form-field class="account-form">
+            <input matInput type="password" name="confirmPassword" placeholder="Confirm password"
+            formControlName="confirmPassword">
+            <mat-error>confirmPass</mat-error>
+        </mat-form-field><br>
+        </mat-card>
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+    </div>
+</div>

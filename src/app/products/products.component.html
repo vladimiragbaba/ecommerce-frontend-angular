@@ -1,0 +1,28 @@
+<div class="page-container">
+  <div class="box">
+    <mat-select name = "categoryId" [(ngModel)] = "selectedCategoryId" (selectionChange) = "searchProducts()">
+      <mat-option value = 0>Any</mat-option>
+      <mat-option *ngFor = "let cat of allCategories" value= "{{cat.id}}">{{cat.name}}</mat-option>
+    </mat-select>
+  </div>
+   
+
+  <div class="content" *ngFor="let product of products">
+    <mat-card class="mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{product.image}}">
+      <mat-card-content>
+        <p>Price: {{product.price}}</p>
+        <p>
+          {{product.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click) = "addToCart(product)">Add to cart</button>
+        <button mat-button (click) = "removeFromCart(product)">Remove from cart</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

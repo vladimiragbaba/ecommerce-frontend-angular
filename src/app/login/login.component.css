@@ -1,0 +1,24 @@
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+form .form-row {
+    display: block;
+}
+
+.form-container {
+    width: 50%;
+}
+
+/* :host {
+    background: blue;
+    display: block;
+} */

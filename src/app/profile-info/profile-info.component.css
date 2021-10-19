@@ -1,0 +1,18 @@
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-div {
+    display: flex;
+}
+
+.account-card {
+    background-color: rgb(255, 255, 170);
+}
+
+.account-form {
+    margin-top: 10px;
+}

@@ -1,0 +1,20 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css';
+html, body { height: 100%; }
+body{
+    margin:0;
+    font-family: "Popins", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #5c00e6;
+    text-align: left;
+    background-color: #1e1e2f;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}
+.modal {
+    margin-top:2%;
+}

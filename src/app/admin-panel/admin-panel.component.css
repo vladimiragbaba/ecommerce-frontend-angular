@@ -1,0 +1,72 @@
+.page-container {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.apanel-div {
+    margin-top: 5%;
+}
+
+.apanel-card {
+    background-color: rgb(255, 255, 170);
+}
+
+.account-form {
+    margin-top: 10px;
+}
+
+.user-table-view{
+    float: right;
+    margin-right: 38%;
+    
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #ff9900;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #ff9900;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #984400;
+  }
+  
+
+nav {
+      margin-top:1%;
+      border-radius: 3%;
+  }
+
+
+

@@ -1,0 +1,23 @@
+<div class="page-container">
+    <mat-card class="form-container">
+        <mat-card-content>
+            <h1 class="center">Login</h1>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field class="form-row">
+                    <mat-label class="fas fa-mail-bulk">Email</mat-label>
+                    <input matInput type="email" placeholder="Email" formControlName="email" required>
+    
+                </mat-form-field>
+    
+                <mat-form-field class="form-row">
+                    <mat-label class="fas fa-lock">Password</mat-label>
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+    
+                </mat-form-field>
+    
+                <button type="submit" mat-raised-button color="primary">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+

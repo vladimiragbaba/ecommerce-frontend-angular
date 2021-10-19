@@ -1,0 +1,247 @@
+<div class="page-container">
+    <!---------------------------------------------------User managment---------------------------------------------------------------->
+    <nav class="navbar navbar-light bg-primary">
+        <div class="container-fluid">
+            <h2>Manage users</h2>
+            <div class="d-flex">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalUser">Add user</button>
+            </div>
+        </div>
+    </nav>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">User id</th>
+                <th scope="col">Email</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of usersData">
+                <td>{{user.id}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.role}}</td>
+                <td>
+                    <button (click)="deleteUser(user)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+ 
+  <!--------------------------------------------- Modal for + new user------------------------------------------------------>
+  <div class="modal fade" id="exampleModalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit) = "onSubmitUser()" [formGroup] = "formUser">
+                <mat-card class="apanel-card">
+                    <mat-card-title style="text-align: center;">Admin panel</mat-card-title>
+                    <mat-card-title>New user</mat-card-title>
+                    <mat-form-field class="account-form">
+                        <input matInput type="text" name="email" placeholder="Email" formControlName="email">
+                        <mat-error>Email</mat-error>
+                        <!-- <label style="color: red;">Email already exists</label> -->
+                    </mat-form-field><br>
+                    <mat-form-field class="account-form">
+                        <input matInput type="firstName" name="firstName" placeholder="Firstname" formControlName="firstName">
+                        <mat-error>Firstname</mat-error>
+                    </mat-form-field><br>
+                    <mat-form-field class="account-form">
+                        <input matInput type="lastName" name="lastName" placeholder="Lastname" formControlName="lastName">
+                        <mat-error>Lastname</mat-error>
+                    </mat-form-field><br>
+                    <mat-form-field class="account-form">
+                        <input matInput type="password" name="password" placeholder="Password" formControlName="password"
+                        >
+                        <mat-error>password</mat-error>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose user role</mat-label>
+                        <mat-select name = "role" formControlName = "role">
+                          <mat-option value="ADMIN">Admin</mat-option>
+                          <mat-option value="USER">Customer</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+    
+                    </mat-card>
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add new user</button>  
+            </form>      
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!----------------------------------------------------------------------------------------------------------------------------->
+  <!---------------------------------------------Category managment-------------------------------------------------------------->
+  <nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>Manage categories</h2>
+        <div class="d-flex">
+            <button (click)="clickAdd()" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCategory">Add category</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Category id</th>
+            <th scope="col">Category name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categoriesData">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td>
+                <button (click)="onEdit(category)" data-bs-toggle="modal" data-bs-target="#exampleModalCategory" class="btn btn-warning">Edit</button>
+                <button class="btn btn-danger" (click) = "onDeleteCategory(category)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+<!--------------------------------------------- Modal for + new category------------------------------------------------------>
+<div class="modal fade" id="exampleModalCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit) = "onSubmitCategory()" [formGroup] = "formCategory">
+            <mat-card class="apanel-card">
+            <mat-card-title *ngIf="showAdd">New Category</mat-card-title>
+            <mat-card-title *ngIf="showUpdate">Update Category</mat-card-title>
+            <div>
+                <mat-form-label formControlName = "idCategory"></mat-form-label>
+            </div>
+            <mat-form-field class="account-form">
+                <input matInput type="text" name="category" placeholder="Category" formControlName="category">
+                <mat-error>Category name</mat-error>
+                <!-- <label style="color: red;">Category already exists</label> -->
+            </mat-form-field>
+            </mat-card>
+            <button *ngIf="showAdd" mat-raised-button type="submit" class="btn btn-danger pull-right">Add new category</button>
+        </form>    
+    </div>
+    <div class="modal-footer">
+      <button id="cancel1" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" *ngIf="showUpdate" (click)="updateCategory()" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>
+</div>
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------Products managment-------------------------------------------------------------->
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>Manage products</h2>
+        <div class="d-flex">
+            <button (click)="clickAdd()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalProduct">Add new product</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Product id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image(url)</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productsData">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.image}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.category.name}}</td>
+            <td>
+                <button (click)="onEditProduct(product)" data-bs-toggle="modal" data-bs-target="#exampleModalProduct" class="btn btn-warning">Edit</button>
+                <button class="btn btn-danger" (click) = "deleteProduct(product)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+<!--------------------------------------------- Modal for + new product------------------------------------------------------>
+<div class="modal fade" id="exampleModalProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit) = "onSubmitProduct()" [formGroup] = "formProduct">
+            <mat-card class="apanel-card">
+            <mat-card-title *ngIf = "showAdd">New product</mat-card-title>
+            <mat-card-title *ngIf = "showUpdate">Update product</mat-card-title>
+            <mat-form-label formControlName = "idProduct"></mat-form-label>
+            <mat-form-field class="product-form">
+                <input matInput type="text" name="name" placeholder="Name" formControlName="name">
+                <mat-error>Name</mat-error>
+            </mat-form-field><br>
+            <mat-form-field class="product-form">
+                <input matInput type="number" name="price" placeholder="Price" formControlName="price">
+                <mat-error>Price</mat-error>
+            </mat-form-field><br>
+            <mat-form-field class="product-form">
+                <input matInput type="text" name="description" placeholder="Description" formControlName="description">
+                <mat-error>Description</mat-error>
+            </mat-form-field><br>
+            <mat-form-field class="product-form">
+                <input matInput type="text" name="image" placeholder="Image(link url)" formControlName="image"
+                >
+                <mat-error>Image</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose product category</mat-label>
+                <mat-select name = "categoryId" formControlName = "categoryId">
+                  <mat-option *ngFor = "let cat of categoriesData" value= "{{cat.id}}">{{cat.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!-- <form>
+                <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="category">
+                    <mat-option *ngFor="let category of categories" [value]="category.value">
+                    {{category.viewValue}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <p> Selected category: {{selectedValue}} </p>
+            </form>  -->
+            </mat-card>
+            <button *ngIf="showAdd" mat-raised-button type="submit" class="btn btn-danger pull-right">Add new product</button>
+    </form>    
+    </div>
+    <div class="modal-footer">
+      <button id="cancel2" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" *ngIf="showUpdate" (click)="updateProduct()" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>
+</div>
+<!----------------------------------------------------------------------------------------------------------------------------->  
+</div>
